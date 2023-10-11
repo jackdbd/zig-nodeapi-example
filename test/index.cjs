@@ -11,14 +11,6 @@ test("greet() throws when no arguments are passed in", (t) => {
   assert.throws(() => {
     greet();
   });
-  // try {
-  //   greet();
-  // } catch (err) {
-  //   assert.strictEqual(
-  //     err.message,
-  //     "Function greet() requires exactly 2 arguments."
-  //   );
-  // }
 });
 
 test("greet() throws when first argument is not a string", (t) => {
