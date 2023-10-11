@@ -1,5 +1,12 @@
 # Zig Node-API example
 
+[![Node-API - 9](https://img.shields.io/static/v1?label=Node-API&message=9&color=2ea44f)](https://nodejs.org/api/n-api.html)
+[![CI Linux](https://github.com/jackdbd/zig-nodeapi-example/actions/workflows/ci-linux.yaml/badge.svg)](https://github.com/jackdbd/zig-nodeapi-example/actions/workflows/ci-linux.yaml)
+[![CI MacOS](https://github.com/jackdbd/zig-nodeapi-example/actions/workflows/ci-macos.yaml/badge.svg)](https://github.com/jackdbd/zig-nodeapi-example/actions/workflows/ci-macos.yaml)
+[![CI Windows](https://github.com/jackdbd/zig-nodeapi-example/actions/workflows/ci-windows.yaml/badge.svg)](https://github.com/jackdbd/zig-nodeapi-example/actions/workflows/ci-windows.yaml)
+
+<!-- Node-API badge generated here: https://michaelcurrin.github.io/badge-generator/#/ -->
+
 Minimal repo to show how to create a Node.js native addon using Zig and the [Node-API](https://nodejs.org/api/n-api.html#node-api).
 
 ## Instructions
