@@ -1,0 +1,7 @@
+{
+  "editor.formatOnSave": true,
+  "files.exclude": {
+    "**/deps/": false,
+    "**/zig-cache/": true
+  }
+}

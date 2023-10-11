@@ -1,0 +1,19 @@
+{
+  "name": "zig-node-demo",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "author": "Giacomo Debidda <giacomo@giacomodebidda.com> (https://giacomodebidda.com/)",
+  "keywords": [],
+  "license": "MIT",
+  "scripts": {
+    "build": "npm run build:debug && npm run build:release",
+    "build:debug": "mkdir -p dist/debug && zig build-lib -mcpu=baseline -ODebug -dynamic -lc -isystem deps/node-$(node --version)/include/node src/addon.zig -fallow-shlib-undefined -femit-bin=dist/debug/addon.node",
+    "build:release": "mkdir -p dist/release && zig build-lib -mcpu=baseline -OReleaseFast -dynamic -lc -isystem deps/node-$(node --version)/include/node src/addon.zig -fallow-shlib-undefined -femit-bin=dist/release/addon.node",
+    "clean": "rm -rf dist",
+    "example:bare-minimum": "node examples/bare-minimum.cjs",
+    "example:greet": "node examples/greet.cjs",
+    "__postinstall": "./download-node-headers.sh",
+    "test": "node test/index.cjs"
+  }
+}

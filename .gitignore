@@ -1,0 +1,8 @@
+# Node-API header files
+deps/
+
+# build artifacts
+dist/
+
+zig-cache/
+zig-out/
