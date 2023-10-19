@@ -10,7 +10,7 @@ on:
 
 jobs:
   windows-build:
-    name: build Node.js ${{ matrix.node-version }} on ${{ matrix.host }}
+    name: build+test Node.js ${{ matrix.node-version }} on ${{ matrix.host }}
     runs-on: ${{ matrix.host }}
     strategy:
       fail-fast: true
@@ -23,12 +23,18 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
       - name: Setup Zig
         uses: goto-bus-stop/setup-zig@v2
         with:
           version: ${{ matrix.zig-version }}
       - run: npm install
-      - name: Download Node.js ${{ matrix.node-version }} headers
-        run: npm run headers
-      - run: zig build -Doptimize=ReleaseFast
-      - run: npm test
+      - run: bash ./download-node-headers.sh
+      - run: bash ./download-node-exe-and-lib.sh
+      - run: zig build --build-file build-windows-x86-64.zig -Doptimize=ReleaseFast
+      - run: deps/node-v18.17.0/win-x64/node.exe --version
+      - name: Execute tests on Windows
+        run: deps/node-v18.17.0/win-x64/node.exe test/windows.cjs

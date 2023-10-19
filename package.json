@@ -8,7 +8,8 @@
   "license": "MIT",
   "scripts": {
     "build": "run-s build:*",
-    "build:debug": "mkdir -p dist/debug && zig build-lib -mcpu=baseline -ODebug -dynamic -lc -isystem ./deps/node-$(node -v)/include/node src/addon.zig -fallow-shlib-undefined -femit-bin=dist/debug/addon.node",
+    "build:win": "mkdir -p dist/debug && zig build-lib -ODebug -dynamic -lc -isystem ./deps/node-$(node -v)/include/node -fallow-shlib-undefined -target x86_64-windows-gnu -femit-bin=dist/debug/addon.node src/addon.zig",
+    "build:debug": "mkdir -p dist/debug && zig build-lib -mcpu=baseline -ODebug -dynamic -lc -isystem ./deps/node-$(node -v)/include/node -fallow-shlib-undefined -femit-bin=dist/debug/addon.node src/addon.zig",
     "build:release": "mkdir -p dist/release && zig build-lib -mcpu=baseline -OReleaseFast -dynamic -lc -isystem ./deps/node-$(node -v)/include/node src/addon.zig -fallow-shlib-undefined -femit-bin=dist/release/addon.node",
     "clean": "rm -rf dist",
     "example": "run-s example:*",
@@ -16,7 +17,7 @@
     "example:greet": "node examples/greet.cjs",
     "headers": "bash ./download-node-headers.sh",
     "nuke": "rm -rf deps dist node_modules package-lock.json",
-    "test": "node test/index.cjs"
+    "test": "node test/linux.cjs"
   },
   "dependencies": {},
   "devDependencies": {
